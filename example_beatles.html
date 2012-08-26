@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript" src="sxoop_template.js"></script>
+<script type="text/javascript" src="example_data_beatles.js"></script>
+<script type="text/javascript" src="example_data_stones.js"></script>
+</head>
+<body>
+<textarea id="template1" style="display:none;">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Instrument</th>
+  </tr>
+  [: foreach($,function(musician){ :]
+  <tr> 
+    <td>[:= musician.name :]</td>
+    <td>[:= musician.instrument :]</td>
+  </tr>
+  [: }); :]
+</table>
+
+</textarea>
+<!-- Actual content goes here -->
+<div id="placeholder"></div>
+<div id="placeholder2"></div>
+
+<script type="text/javascript">
+  var template = document.getElementById("template1").value;
+  var compiled = SXOOP.template.compile(template);
+  var placeholder = document.getElementById("placeholder");
+  placeholder.innerHTML = compiled(beatles);
+  var placeholder2 = document.getElementById("placeholder2");
+  placeholder2.innerHTML = compiled(stones);
+</script>
+</body>
+</html>
+ 
